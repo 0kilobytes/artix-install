@@ -1,4 +1,4 @@
-printf '\n`minimal install goes here\n'
+printf '\n`minimal install goes here\n`'
 
 ping -c 1 archlinux.org > /dev/null
 if [[ $? -ne 0 ]] ; then
