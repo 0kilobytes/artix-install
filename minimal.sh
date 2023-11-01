@@ -80,5 +80,13 @@ yay -Scc --noconfirm
 
 #install 
 doas -u $user paru -S --skipreview --noconfirm --needed fastfetch-git
-fastfetch && sleep 10 &&
-#doas -u $user paru -S --skipreview --needed acpi alsa-utils-openrc android-tools archlinux-keyring base base-devel brightnessctl-git btop-git cmatrix-git connman-openrc cryptsetup cryptsetup-openrc dhcpcd dwl-git efibootmgr element-desktop-git elogind-openrc fastfetch-git ffmpeg flatpak foot gimp git grim-git grub htop hyprland-git jdk-openjdk jre-openjdk keepassxc krita lf-git libdovi libreoffice-fresh linux-firmware linux-headers linux-zen lvm2 lvm2-openrc man-db mercury-browser-bin mkinitcpio mpd mpd-openrc mpv-git mpvpaper neovim-git noto-fonts-cjk nsnake-git oh-my-zsh-git opendoas openrc otf-font-awesome p7zip paru-git pipes-rs-git pipewire-alsa pipewire-openrc pipewire-pulse python-pip python-pipx python-pywalfox python-requests python-selenium pywal-git qt6-wayland rtorrent-vi-color rustdesk-bin slurp-git speedtest-go-git spotify-tui stunnel-openrc sway swaybg-git swayidle-git swayimg-git swaylock-effects-git tree vscodium-git w3m waybar wget windscribe-openrc wireplumber-openrc wpa_supplicant youtube-dl-git zzz
+fastfetch && \
+until [[ $install == "n" || $install == "y" ]]; do
+    printf "Install all listed pacakges? (y/N): " && read wipe_disk
+    [[ ! $instal ]] && install="n"
+done
+
+if [[ $install == "y" ]]; then
+    doas -u $user paru -S --skipreview --needed $(echo $(curl https://raw.githubusercontent.com/0kilobytes/artix-install/main/all-packages.sh))
+    echo 'Script finished'
+fi
