@@ -83,7 +83,7 @@ doas -u $user paru -S --skipreview --noconfirm --needed fastfetch-git
 fastfetch && \
 until [[ $install == "n" || $install == "y" ]]; do
     printf "Install all listed pacakges? (y/N): " && read wipe_disk
-    [[ ! $instal ]] && install="n"
+    [[ ! $install ]] && install="n"
 done
 
 if [[ $install == "y" ]]; then
