@@ -87,6 +87,6 @@ until [[ $install == "n" || $install == "y" ]]; do
 done
 
 if [[ $install == "y" ]]; then
-    doas -u $user paru -S --skipreview --needed $(echo $(curl https://raw.githubusercontent.com/0kilobytes/artix-install/main/all-packages.sh))
+    doas -u $user paru -S --skipreview --needed $(echo $(curl https://raw.githubusercontent.com/0kilobytes/artix-install/main/all-packages))
     echo 'Script finished'
 fi
